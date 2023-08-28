@@ -1,0 +1,13 @@
+<section class="flex flex-1 mb-2 mt-2 border-outline-on-surface-bottom">
+    <!-- label and price -->
+    <section class="flex flex-1 justify-content-between align-items-center">
+        <div class="">{{ item?.label }}</div>
+        <div class="">{{ item?.price }}</div>
+    </section>
+    <!-- controls -->
+    <section class="flex flex-1 justify-content-end align-items-center">
+        <i class="fa-solid fa-minus p-4"></i>
+        <span>{{ item?.quantity }}</span>
+        <i class="fa-solid fa-plus p-4"></i>
+    </section>
+</section>

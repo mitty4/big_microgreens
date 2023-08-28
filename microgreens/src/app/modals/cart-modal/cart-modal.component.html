@@ -1,0 +1,31 @@
+<p-dialog
+        header="GeeksforGeeks"
+        [(visible)]="visible"
+        [style]="{width: '30vw'}"
+        [draggable]="true" 
+        [resizable]="false">
+
+        <!-- items -->
+        <section class="flex flex-column flex-1">
+            <app-cart-item *ngFor="let item of items"></app-cart-item>
+        </section>
+
+        <!-- total -->
+        <section class="flex flex-1 justify-content-start">
+
+        </section>
+  
+        <ng-template pTemplate="footer">
+            <p-button
+                (click)="visible = false"
+                label="Accept"
+                styleClass="p-button-success">
+            </p-button>
+              
+            <p-button
+                (click)="visible = false"
+                label="Reject"
+                styleClass="p-button-danger">
+            </p-button>
+        </ng-template>
+    </p-dialog>

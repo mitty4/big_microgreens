@@ -1,0 +1,90 @@
+$primary-bg: #1f1f1f;
+$secondary-bg: #141414;
+$black: #111;
+$white: #f1f1f1;
+$primary-color: #0ab342;
+$primary-color-dark: #02270e;
+
+
+$border-color-primary: #474747;
+
+$icon-primary-color: #000;
+
+.app-bg-primary {
+    background-color: $primary-bg;
+}
+.app-bg-secondary {
+    background-color: $secondary-bg;
+}
+.app-bg-primary-color {
+    background-color: $primary-color;
+}
+.app-bg-primary-color-dark {
+    background-color: $primary-color-dark;
+}
+.app-bg-black {
+    background-color: $black;
+}
+.app-bg-white {
+    background-color: $white;
+}
+.app-icon-primary-color {
+    color: $icon-primary-color;
+}
+.border-outline-on-surface {
+    border: 1px solid $border-color-primary;
+}
+.border-outline-on-surface-left {
+    border-left: 1px solid $border-color-primary;
+}
+.border-outline-on-surface-right {
+    border-right: 1px solid $border-color-primary;
+}
+.border-outline-on-surface-top {
+    border-top: 1px solid $border-color-primary;
+}
+.border-outline-on-surface-bottom {
+    border-bottom: 1px solid $border-color-primary;
+}
+.scrollbar::-webkit-scrollbar {
+    width: 10px;
+}
+.round {
+    border-radius: 35px;
+}
+.box-shadow-elevation-1 {
+    box-shadow: 0px 5px 5px white;
+}
+.text-headline-1 {
+    font-size: 4rem;
+    line-height: 4rem;
+    font-weight: 600;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #1d1d1d;
+    border: 1px solid #222222;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #424242;
+}
+
+i {
+    cursor: pointer;
+}
+p-dialog {
+    .p-dialog, .p-dialog-header, .p-dialog-footer {
+        background-color: $primary-bg !important;
+        color: $white !important;
+    }
+
+    .p-dialog-content {
+        @extend .scrollbar;
+        background-color: $secondary-bg !important;
+        color: $white !important;
+    }
+}

@@ -1,0 +1,98 @@
+<span (click)="onClickCart()" class="cursor-pointer round absolute bottom-0 right-0 m-8 p-4 app-bg-white">
+    <span class="cart-badge round bg-red-600 p-2 absolute text-white">4</span>
+    <i class="fa-solid fa-cart-shopping text-2xl app-icon-primary-color flex flex-1 justify-content-center align-items-center"></i>
+</span>
+
+<!-- TODO: move this to index and use the modal service -->
+<p-dialog
+    header="Checkout"
+    [(visible)]="visible"
+    [style]="{width: '30vw', height: '60vh'}"
+    [draggable]="true" 
+    [resizable]="false">
+
+    <!-- CONTENT -->
+    <ng-container [ngSwitch]="show">
+        <ng-container *ngSwitchCase="'shoppingCart'" [ngTemplateOutlet]="shoppingCartTemplate"></ng-container>
+        <ng-container *ngSwitchCase="'addressForm'" [ngTemplateOutlet]="addressFormTemplate"></ng-container>
+        <ng-container *ngSwitchCase="'paymentForm'" [ngTemplateOutlet]="paymentFormTemplate"></ng-container>
+    </ng-container>
+
+    <!-- FOOTER -->
+    <ng-template pTemplate="footer">
+        <ng-container [ngSwitch]="show">
+            <ng-container *ngSwitchCase="'shoppingCart'" [ngTemplateOutlet]="shoppingCartFooter"></ng-container>
+            <ng-container *ngSwitchCase="'addressForm'" [ngTemplateOutlet]="addressFormFooter"></ng-container>
+            <ng-container *ngSwitchCase="'paymentForm'" [ngTemplateOutlet]="paymentFormFooter"></ng-container>
+        </ng-container>
+    </ng-template>
+
+    <!-- CONTENT TEMPLATES -->
+    <ng-template #addressFormTemplate>
+        <section class="flex flex-1 flex-column">
+            <form [formGroup]="addressForm" action=""></form>
+            address form
+        </section>
+    </ng-template>
+
+    <ng-template #shoppingCartTemplate>
+        <!-- items -->
+        <section class="flex flex-column flex-1">
+            <app-cart-item *ngFor="let item of items" [item]="item"></app-cart-item>
+        </section>
+    </ng-template>
+
+    <ng-template #paymentFormTemplate>
+        <app-stripe-payment></app-stripe-payment>
+    </ng-template>
+
+    <!-- FOOTER TEMPLATES -->
+    <ng-template #shoppingCartFooter>
+        <section class="flex flex-1 justify-content-between align-items-end mt-3">
+            <!-- total -->
+            <section class="flex flex-1 justify-content-start align-items-end">
+                <label for="total" class="mr-3 text-2xl">Total:</label>
+                <span id="total" class="pl-2 text-3xl">
+                    $9.99
+                </span>
+            </section>
+            <p-button
+            (click)="show = 'addressForm'"
+            label="Next"
+            styleClass="p-button-success">
+        </p-button>
+    </section>
+    </ng-template>
+
+    <ng-template #addressFormFooter>
+        <section class="flex flex-1 justify-content-between align-items-end mt-3">
+            <p-button
+                (click)="show = 'shoppingCart'"
+                label="Back"
+                styleClass="p-button-success">
+            </p-button>
+            <p-button
+                (click)="show = 'paymentForm'"
+                label="Next"
+                styleClass="p-button-success">
+            </p-button>
+        </section>
+    </ng-template>
+
+    <ng-template #paymentFormFooter>
+        <section class="flex flex-1 justify-content-between align-items-end mt-3">
+            <p-button
+                (click)="show = 'addressForm'"
+                label="Back"
+                styleClass="p-button-success">
+            </p-button>
+            <p-button
+                (click)="visible = false"
+                label="Submit"
+                styleClass="p-button-success">
+            </p-button>
+        </section>
+    </ng-template>
+    
+
+</p-dialog>

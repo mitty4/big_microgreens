@@ -1,0 +1,21 @@
+    <section 
+        class="
+            app-bg-primary 
+            align-items-center 
+            justify-content-start 
+            flex 
+            flex-column 
+            border-round 
+            h-22rem 
+            border-outline-on-surface"
+        >
+        <img [src]="product.img.src" [alt]="product.img.alt" class="w-full h-16rem app-bg-primary-color-dark">
+        <h5>{{ product.title }}</h5>
+        <p class="p-1">{{ product.description }}</p>
+        <section class="flex flex-1 justify-content-between align-items-center w-full">
+            <i class="fa-solid fa-minus p-4"></i>
+            <span>0</span>
+            <i class="fa-solid fa-plus p-4"></i>
+
+        </section>
+    </section>
