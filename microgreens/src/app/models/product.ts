@@ -1,12 +1,13 @@
 import { Img } from './interfaces/img'
 
 export class Product {
-    title: string = '';
+    label: string = '';
     description: string = '';
     img: Img = {
         src: '',
         alt: 'alt-text',
     };
+    price: number = 0;
 
 
     constructor(data: any) {
@@ -15,8 +16,9 @@ export class Product {
 
 
     private _setData(data: any) {
-        this.title = data?.title;
+        this.label = data?.label;
         this.description = data?.description;
         this.img = data?.img;
+        this.price = data?.price;
     }
 }

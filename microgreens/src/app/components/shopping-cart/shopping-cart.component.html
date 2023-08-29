@@ -1,11 +1,12 @@
 <span (click)="onClickCart()" class="cursor-pointer round absolute bottom-0 right-0 m-8 p-4 app-bg-white">
-    <span class="cart-badge round bg-red-600 p-2 absolute text-white">4</span>
+    <!-- TODO: itemsTotal can be an observable of itemsCountMap with a pipe to reduce/sum -->
+    <span class="cart-badge round bg-red-600 p-2 absolute text-white">{{ itemsTotal }}</span>
     <i class="fa-solid fa-cart-shopping text-2xl app-icon-primary-color flex flex-1 justify-content-center align-items-center"></i>
 </span>
 
 <!-- TODO: move this to index and use the modal service -->
 <p-dialog
-    header="Checkout"
+    [header]="header"
     [(visible)]="visible"
     [style]="{width: '30vw', height: '60vh'}"
     [draggable]="true" 
@@ -30,8 +31,54 @@
     <!-- CONTENT TEMPLATES -->
     <ng-template #addressFormTemplate>
         <section class="flex flex-1 flex-column">
-            <form [formGroup]="addressForm" action=""></form>
-            address form
+            <form [formGroup]="addressForm" action="">
+                <!-- EMAIL -->
+                <section class="flex flex-1 flex-column mt-3">
+                    <label for="email-input">Email Address</label>
+                    <input id="email-input" type="text" pInputText formControlName="email" />
+                </section>
+                <section class="flex flex-1 mt-3">
+                    <!-- FIRST NAME -->
+                    <section class="flex flex-1 flex-column mt-3 mr-3">
+                        <label for="firstname-input">First Name</label>
+                        <input id="firstname-input" type="text" pInputText formControlName="firstname" />
+                    </section>
+                    <!-- LAST NAME -->
+                    <section class="flex flex-1 flex-column mt-3">
+                        <label for="lastname-input">Last Name</label>
+                        <input id="lastname-input" type="text" pInputText formControlName="lastname" />
+                    </section>
+                </section>
+                <section class="flex flex-1 mt-3">
+                    <!-- DELIVERY ADDRESS -->
+                    <section class="flex flex-1 flex-column mt-3 flex-grow-3 mr-3">
+                        <label for="address1-input">Delivery Address</label>
+                        <input id="address1-input" type="text" pInputText formControlName="address1" />
+                    </section>
+                    <!-- APT SUITE -->
+                    <section class="flex flex-1 flex-column mt-3 flex-grow-1">
+                        <label for="address2-input">Apt/Suite #</label>
+                        <input id="address2-input" type="text" pInputText formControlName="address2" />
+                    </section>
+                </section>
+                <section class="flex flex-1 mt-3">
+                    <!-- CITY -->
+                    <section class="flex flex-1 flex-column mt-3 pr-3 w-4">
+                        <label for="city-input">City</label>
+                        <input id="city-input" type="text" pInputText formControlName="city" />
+                    </section>
+                    <!-- STATE -->
+                    <section class="flex flex-1 flex-column mt-3 pr-3 w-4">
+                        <label for="state-input">State</label>
+                        <input id="state-input" type="text" pInputText formControlName="state" />
+                    </section>
+                    <!-- ZIP CODE -->
+                    <section class="flex flex-1 flex-column mt-3 w-4">
+                        <label for="zipcode-input">Zip Code</label>
+                        <input id="zipcode-input" type="text" pInputText formControlName="zipcode" />
+                    </section>
+                </section>
+            </form>
         </section>
     </ng-template>
 

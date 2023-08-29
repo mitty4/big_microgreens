@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product';
+import { Product } from '../../models/product';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
 
 @Component({
   selector: 'app-all-products',
@@ -8,7 +9,7 @@ import { Product } from 'src/app/models/product';
 export class AllProductsComponent{
   public products: Product[] = [];
 
-  constructor() {
+  constructor(public shoppingCartService: ShoppingCartService) {
     let i = 0;
     const _products: Product[] = []
     while(i < 9) {

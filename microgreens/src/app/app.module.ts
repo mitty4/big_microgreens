@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule }
     from '@angular/platform-browser/animations';
+import { InputTextModule } from 'primeng/inputtext';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StripePaymentComponent } from './components/stripe-payment/stripe-payment.component';
@@ -36,7 +37,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonModule,
     DialogModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent],

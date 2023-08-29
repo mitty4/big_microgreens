@@ -2,7 +2,7 @@
     <app-welcome></app-welcome>
     <div class="flex flex-1">
         <section class="grid p-3 app-bg-secondary flex flex-1 mb-3">
-            <app-product class="col-12 md:col-6 lg:col-3 overflow-hidden min-w-0" *ngFor="let product of products" [product]="product"></app-product>
+            <app-product class="col-12 md:col-6 lg:col-3 overflow-hidden min-w-0" *ngFor="let product of shoppingCartService.possibleItems$ | async" [product]="product"></app-product>
         </section>
     </div>
 </div>
