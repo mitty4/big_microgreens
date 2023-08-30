@@ -6,8 +6,10 @@
     </section>
     <!-- controls -->
     <section class="flex flex-1 justify-content-end align-items-center">
-        <i class="fa-solid fa-minus p-4"></i>
-        <span>{{ item?.quantity }}</span>
-        <i class="fa-solid fa-plus p-4"></i>
+        <i (click)="shoppingCartService.trashItem(item)" class="fa-solid p-4"
+            [ngClass]="item.count < 2 ? 'fa-trash' : 'fa-minus'"
+        ></i>
+        <span>{{ item?.count }}</span>
+        <i (click)="shoppingCartService.addItem(item)" class="fa-solid fa-plus p-4"></i>
     </section>
 </section>

@@ -17,6 +17,8 @@ import { CartModalComponent } from './modals/cart-modal/cart-modal.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { CheckoutCartComponent } from './modals/cart-modal/checkout-cart/checkout-cart.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GetTotalInCartPipe } from './pipes/get-total-in-cart.pipe';
+import { GetPriceInCartPipe } from './pipes/get-price-in-cart.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CartModalComponent,
     CartItemComponent,
     CheckoutCartComponent,
+    GetTotalInCartPipe,
+    GetPriceInCartPipe,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     ShoppingCartComponent,
     CartModalComponent,
     CartItemComponent,
-    CheckoutCartComponent
+    CheckoutCartComponent,
+    GetTotalInCartPipe,
+    GetPriceInCartPipe
   ]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalService } from 'src/app/services/modal.service';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,6 +13,7 @@ export class ShoppingCartComponent {
   public itemsTotal: number = 0;
   public items: any = [];
   public show: string = 'shoppingCart';
+  private _subscriptions: Subscription[] = [];
 
   public addressForm: FormGroup = this._fb.group({
     email: ['', [Validators.email]],
@@ -39,19 +41,25 @@ export class ShoppingCartComponent {
   constructor(
     private _modalService: ModalService, 
     private _fb: FormBuilder, 
-    private _shoppingCartService: ShoppingCartService
+    public shoppingCartService: ShoppingCartService
   ) {
-    
+    // const _shoppingCartItemsSubscription(): Subscription {
+    //   return this._shoppingCartService.cartItems$.subscribe((cartItems) => {
+    //     this.
+    //   })
+    // }
   }
 
   public onClickCart() {
-    // alert('cart');
     this.show = 'shoppingCart';
     this.visible = true;
+
+    
   }
 
   onClickAddItem(item: any) {
-    this._shoppingCartService.addItem(item);
+    this.shoppingCartService.addItem(item);
   }
+
 
 }

@@ -46,6 +46,9 @@ $icon-primary-color: #000;
 .border-outline-on-surface-bottom {
     border-bottom: 1px solid $border-color-primary;
 }
+.border-primary-color {
+    border: 1px solid $primary-color !important;
+}
 .scrollbar::-webkit-scrollbar {
     width: 10px;
 }

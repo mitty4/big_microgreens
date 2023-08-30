@@ -1,21 +1,22 @@
     <section 
         class="
+            text-white
             app-bg-primary 
             align-items-center 
             justify-content-start 
             flex 
             flex-column 
             border-round 
-            h-22rem 
-            border-outline-on-surface"
+            h-22rem"
+            [ngClass]="product.count > 0 ? 'border-primary-color' : 'border-outline-on-surface'"
         >
         <img [src]="product.img.src" [alt]="product.img.alt" class="w-full h-16rem app-bg-primary-color-dark">
-        <h5>{{ product.label }}</h5>
+        <h1 class="text-3xl text-white">{{ product.label }}</h1>
         <p class="p-1">{{ product.description }}</p>
         <section class="flex flex-1 justify-content-between align-items-center w-full">
-            <i class="fa-solid fa-minus p-4"></i>
-            <span>0</span>
-            <i class="fa-solid fa-plus p-4"></i>
+            <i (click)="shoppingCartService.trashItem(product)" class="fa-solid fa-minus p-4"></i>
+            <span>{{ product.count }}</span>
+            <i (click)="shoppingCartService.addItem(product)" class="fa-solid fa-plus p-4"></i>
 
         </section>
     </section>

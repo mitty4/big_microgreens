@@ -8,6 +8,7 @@ export class Product {
         alt: 'alt-text',
     };
     price: number = 0;
+    count: number = 0;
 
 
     constructor(data: any) {

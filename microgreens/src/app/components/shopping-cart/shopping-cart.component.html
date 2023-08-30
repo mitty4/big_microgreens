@@ -1,6 +1,6 @@
 <span (click)="onClickCart()" class="cursor-pointer round absolute bottom-0 right-0 m-8 p-4 app-bg-white">
     <!-- TODO: itemsTotal can be an observable of itemsCountMap with a pipe to reduce/sum -->
-    <span class="cart-badge round bg-red-600 p-2 absolute text-white">{{ itemsTotal }}</span>
+    <span class="cart-badge round bg-red-600 p-2 absolute text-white">{{ shoppingCartService.cartItems$ | async | getTotalInCart }}</span>
     <i class="fa-solid fa-cart-shopping text-2xl app-icon-primary-color flex flex-1 justify-content-center align-items-center"></i>
 </span>
 
@@ -85,7 +85,7 @@
     <ng-template #shoppingCartTemplate>
         <!-- items -->
         <section class="flex flex-column flex-1">
-            <app-cart-item *ngFor="let item of items" [item]="item"></app-cart-item>
+            <app-cart-item *ngFor="let item of shoppingCartService?.cartItems$ | async" [item]="item"></app-cart-item>
         </section>
     </ng-template>
 
@@ -100,7 +100,7 @@
             <section class="flex flex-1 justify-content-start align-items-end">
                 <label for="total" class="mr-3 text-2xl">Total:</label>
                 <span id="total" class="pl-2 text-3xl">
-                    $9.99
+                    $ {{ shoppingCartService.cartItems$ | async | getPriceInCart }}
                 </span>
             </section>
             <p-button
