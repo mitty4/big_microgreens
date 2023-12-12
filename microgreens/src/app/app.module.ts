@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule }
     from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
@@ -40,6 +41,7 @@ import { GetPriceInCartPipe } from './pipes/get-price-in-cart.pipe';
     AppRoutingModule,
     ButtonModule,
     DialogModule,
+    DropdownModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     InputTextModule

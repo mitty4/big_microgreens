@@ -1,6 +1,6 @@
 <span (click)="onClickCart()" class="cursor-pointer round absolute bottom-0 right-0 m-8 p-4 app-bg-white">
     <!-- TODO: itemsTotal can be an observable of itemsCountMap with a pipe to reduce/sum -->
-    <span class="cart-badge round bg-red-600 p-2 absolute text-white">{{ shoppingCartService.cartItems$ | async | getTotalInCart }}</span>
+    <span class="cart-badge round bg-red-600 p-2 absolute text-white flex justify-content-center align-items-center w-2rem h-2rem">{{ shoppingCartService.cartItems$ | async | getTotalInCart }}</span>
     <i class="fa-solid fa-cart-shopping text-2xl app-icon-primary-color flex flex-1 justify-content-center align-items-center"></i>
 </span>
 

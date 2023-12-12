@@ -79,6 +79,10 @@ $icon-primary-color: #000;
 i {
     cursor: pointer;
 }
+
+.white-space-pre {
+    white-space: pre;
+}
 p-dialog {
     .p-dialog, .p-dialog-header, .p-dialog-footer {
         background-color: $primary-bg !important;

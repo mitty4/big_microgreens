@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
+import { Quantity } from '../models/quantity';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -8,6 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ShoppingCartService {
   public possibleItemsMap: Map<string, Product> = new Map<string, Product>();
   public itemsInCartMap: Map<string, any> = new Map<string, any>();
+  public possibleQuantityMap: Map<string, Quantity[]> = new Map<string, Quantity[]>();
 
   // TODO: set the observables for totals, item info
   public possibleItemsListener: BehaviorSubject<Product[]> = new BehaviorSubject(Array.from(this.possibleItemsMap.values()));
@@ -19,7 +21,7 @@ export class ShoppingCartService {
 
   constructor() { 
     this._initDummyData();
-
+    this._initDummyQuantityData();
   }
 
   public addItem(item: any) {
@@ -63,7 +65,7 @@ export class ShoppingCartService {
   }
 
   private _initDummyData() {
-    const product1: Product = new Product({ label: 'broccoli', description: 'grown with nutrients', price: 4.99, img: { src: '', alt: ''} });
+    const product1: Product = new Product({ label: 'broccoli', description: 'grown with nutrients', price: 4.99, img: { src: 'assets/images/greens_bowl.png', alt: ''} });
     this.possibleItemsMap.set('broccoli', product1);
     const product2: Product = new Product({ label: 'arugala', description: 'grown with nutrients', price: 4.99, img: { src: '', alt: ''} });
     this.possibleItemsMap.set('arugala', product2);
@@ -75,7 +77,16 @@ export class ShoppingCartService {
     this.possibleItemsMap.set('other', product5);
     const product6: Product = new Product({ label: 'other other', description: 'grown with nutrients', price: 4.99, img: { src: '', alt: ''} });
     this.possibleItemsMap.set('other other', product6);
+    const product7: Product = new Product({ label: 'other other other', description: 'grown with nutrients', price: 4.99, img: { src: '', alt: ''} });
+    this.possibleItemsMap.set('other other other', product6);
     this.possibleItemsListener.next(Array.from(this.possibleItemsMap.values()));
+  }
+
+  private _initDummyQuantityData() {
+    const quantity1: Quantity = new Quantity({ label: '3oz', value: '3' });
+    const quantity2: Quantity = new Quantity({ label: '6oz', value: '6' });
+    const quantity3: Quantity = new Quantity({ label: '9oz', value: '9' });
+    this.possibleQuantityMap.set('broccoli', [quantity1, quantity2, quantity3]);
   }
 
 }
