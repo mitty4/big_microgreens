@@ -3,4 +3,8 @@ app-all-products {
     flex: 1;
     min-width: 0;
     min-height: 0;
+
+    .row-gap-2rem {
+        row-gap: 2rem !important;
+    }
 }

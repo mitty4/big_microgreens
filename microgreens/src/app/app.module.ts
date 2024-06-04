@@ -20,6 +20,8 @@ import { CheckoutCartComponent } from './modals/cart-modal/checkout-cart/checkou
 import { ReactiveFormsModule } from '@angular/forms';
 import { GetTotalInCartPipe } from './pipes/get-total-in-cart.pipe';
 import { GetPriceInCartPipe } from './pipes/get-price-in-cart.pipe';
+import { OurStoryComponent } from './components/our-story/our-story.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { GetPriceInCartPipe } from './pipes/get-price-in-cart.pipe';
     CheckoutCartComponent,
     GetTotalInCartPipe,
     GetPriceInCartPipe,
+    OurStoryComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,9 @@ import { GetPriceInCartPipe } from './pipes/get-price-in-cart.pipe';
     CartItemComponent,
     CheckoutCartComponent,
     GetTotalInCartPipe,
-    GetPriceInCartPipe
+    GetPriceInCartPipe,
+    OurStoryComponent,
+    FooterComponent
   ]
 })
 export class AppModule { }
