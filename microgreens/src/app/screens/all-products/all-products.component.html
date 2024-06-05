@@ -1,12 +1,15 @@
-<div class="flex flex-1 flex-column overflow-scroll scrollbar overflow-x-hidden">
+<div class="flex flex-1 flex-column overflow-scroll scrollbar overflow-x-hidden"
+    [class.text-color-white]="darkMode"
+    [class.text-color-black]="!darkMode"
+>
     <app-welcome></app-welcome>
-    <div class="flex flex-1">
-        <section class="grid p-5 pt-14rem row-gap-2rem app-bg-secondary flex flex-1 mb-3">
+    <div class="flex flex-1 flex-column pt-6">
+        <h4 class="text-headline-3 ml-6 pl-8">Our Products</h4>
+        <section class="grid p-5 row-gap-2rem app-bg-secondary flex flex-1 mb-3">
             <app-product class="col-12 md:col-6 lg:col-3 overflow-hidden min-w-0" *ngFor="let product of shoppingCartService.possibleItems$ | async" [product]="product"></app-product>
         </section>
     </div>
     <app-our-story></app-our-story>
-    <app-faq></app-faq>
     <app-starter-banner></app-starter-banner>
     <app-footer></app-footer>
 </div>

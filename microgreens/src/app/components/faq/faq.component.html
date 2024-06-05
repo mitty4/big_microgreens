@@ -1,1 +1,9 @@
-<p>faq works!</p>
+<section class="w-8">
+<h4 class="text-headline-4">Frequently Asked Questions</h4>
+    <section class="py-3 border-outline-on-surface-bottom" *ngFor="let list of lists">
+        <p class="bold"><b>{{ list.question }}</b></p>
+        <p class="ml-3">{{ list.answer }}</p>
+
+    </section>
+</section>
+

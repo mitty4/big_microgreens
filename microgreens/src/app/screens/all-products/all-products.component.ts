@@ -8,6 +8,7 @@ import { ShoppingCartService } from '../../services/shopping-cart.service';
 })
 export class AllProductsComponent{
   public products: Product[] = [];
+  public darkMode: boolean = true;
 
   constructor(public shoppingCartService: ShoppingCartService) {
     let i = 0;

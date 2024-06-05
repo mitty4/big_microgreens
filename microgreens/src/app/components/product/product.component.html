@@ -11,7 +11,7 @@
             [ngClass]="product.count > 0 ? 'border-primary-color' : 'border-outline-on-surface'"
         >
         <img [src]="product.img.src" [alt]="product.img.alt" class="w-full h-16rem app-bg-primary-color-dark">
-        <section class="p-3">
+        <section class="p-3 flex flex-column flex-1">
             <h1 class="text-3xl text-white">{{ product.label }}</h1>
             <h2 class="text-xl text-white p-1">{{ product.sublabel }}</h2>
             <p class="p-1">{{ product.description }}</p>
@@ -21,7 +21,7 @@
             <span>${{ product.price }}</span>
         </section>
         <p-dropdown [options]="quantityOptions" appendTo="body"></p-dropdown>
-        <section class="flex flex-1 justify-content-between align-items-center w-full">
+        <section class="flex justify-content-between align-items-center w-full">
             <i (click)="shoppingCartService.trashItem(product)" class="fa-solid fa-minus p-4"></i>
             <span>{{ product.count }}</span>
             <i (click)="shoppingCartService.addItem(product)" class="fa-solid fa-plus p-4"></i>

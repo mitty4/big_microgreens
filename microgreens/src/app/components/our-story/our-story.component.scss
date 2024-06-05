@@ -1,5 +1,13 @@
 app-our-story {
     display: flex;
     justify-content: center;
-    padding-bottom: 10rem;
+    flex-direction: column;
+    padding: 14rem 5rem 10rem;
+    @extend .app-bg-tertiary !optional;
+
+    @media screen and (max-width: 1080px) {
+        .flex-column-small-screen {
+          flex-direction: column;
+        }
+      }
 }
