@@ -1,5 +1,6 @@
 $primary-bg: #1f1f1f;
 $secondary-bg: #141414;
+$tertiary-bg: #212121;
 $black: #111;
 $white: #f1f1f1;
 $primary-color: #0ab342;
@@ -10,11 +11,20 @@ $border-color-primary: #474747;
 
 $icon-primary-color: #000;
 
+.text-color-white {
+    color: $white !important;
+}
+.text-color-black {
+    color: $black !important;
+}
 .app-bg-primary {
     background-color: $primary-bg;
 }
 .app-bg-secondary {
     background-color: $secondary-bg;
+}
+.app-bg-tertiary {
+    background-color: $tertiary-bg;
 }
 .app-bg-primary-color {
     background-color: $primary-color;
@@ -63,7 +73,16 @@ $icon-primary-color: #000;
     line-height: 4rem;
     font-weight: 600;
 }
-
+.text-headline-2 {
+    font-size: 2.5rem;
+    line-height: 4rem;
+    font-weight: 600;
+}
+.text-headline-3 {
+    font-size: 2rem;
+    line-height: 3rem;
+    font-weight: 600;
+}
 .text-headline-4 {
     font-size: 1.5rem;
     line-height: 4rem;
