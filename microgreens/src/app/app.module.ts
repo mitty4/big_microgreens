@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule }
     from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
@@ -22,6 +23,13 @@ import { GetTotalInCartPipe } from './pipes/get-total-in-cart.pipe';
 import { GetPriceInCartPipe } from './pipes/get-price-in-cart.pipe';
 import { OurStoryComponent } from './components/our-story/our-story.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { StarterBannerComponent } from './components/starter-banner/starter-banner.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { LoginComponent } from './components/login/login.component';
+import { Amplify } from 'aws-amplify';
+import amplifyconfig from '../amplifyconfiguration.json';
+Amplify.configure(amplifyconfig);
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 
 @NgModule({
   declarations: [
@@ -39,6 +47,9 @@ import { FooterComponent } from './components/footer/footer.component';
     GetPriceInCartPipe,
     OurStoryComponent,
     FooterComponent,
+    StarterBannerComponent,
+    FaqComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +59,9 @@ import { FooterComponent } from './components/footer/footer.component';
     DropdownModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    InputTextModule
+    InputTextModule,
+    FormsModule,
+    AmplifyAuthenticatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -64,7 +77,10 @@ import { FooterComponent } from './components/footer/footer.component';
     GetTotalInCartPipe,
     GetPriceInCartPipe,
     OurStoryComponent,
-    FooterComponent
+    FooterComponent,
+    StarterBannerComponent,
+    FaqComponent,
+    LoginComponent
   ]
 })
 export class AppModule { }

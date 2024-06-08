@@ -4,8 +4,67 @@
         <span class="h-1rem w-1rem bg-green-400 ml-2"></span>
     </div>
     <div class="flex flex-1 justify-content-end align-items-center pr-5">
-        <span class="h-2rem w-2rem flex flex-1 justify-content-end align-items-center">
+        <span (click)="onClickUserProfile()"  class="h-2rem w-2rem flex flex-1 justify-content-end align-items-center cursor-pointer">
+                <div class="mx-2 text-white text-right">
+                    <ng-container *ngIf="auth; else notLoggedIn">
+                        <div>Logged In As:</div>
+                        <div>{{ username }}</div>
+                    </ng-container>
+                    <ng-template #notLoggedIn>Not Logged In</ng-template>
+                </div>    
+            
             <i class="fa-solid fa-user text-2xl text-white"></i>
         </span>
     </div>
 </section>
+
+
+
+  <!-- TODO: move this to index and use the modal service -->
+<p-dialog
+    [header]="header"
+    [(visible)]="visible"
+    [style]="{width: '90vw', height: '90vh', maxWidth: '50rem'}"
+    [draggable]="true" 
+    [resizable]="false">
+    <!-- CONTENT -->
+    <ng-container [ngSwitch]="show">
+        <amplify-authenticator #auth [loginMechanisms]="['email']">
+          <ng-template
+            amplifySlot="authenticated"
+            let-user="user"
+            let-signOut="signOut"
+          >
+            <ng-container *ngSwitchCase="'userProfile'" [ngTemplateOutlet]="userProfileTemplate"></ng-container>
+            <ng-container *ngSwitchCase="'login'" [ngTemplateOutlet]="loginTemplate"></ng-container>
+            <ng-container *ngSwitchCase="'register'" [ngTemplateOutlet]="registerTemplate"></ng-container>
+            <button (click)="signOut()">Sign Out</button>
+          </ng-template>
+        </amplify-authenticator>
+    </ng-container>
+
+    <!-- FOOTER -->
+<!--     <ng-template pTemplate="footer">
+        <ng-container [ngSwitch]="show">
+            <ng-container *ngSwitchCase="'shoppingCart'" [ngTemplateOutlet]="shoppingCartFooter"></ng-container>
+            <ng-container *ngSwitchCase="'addressForm'" [ngTemplateOutlet]="addressFormFooter"></ng-container>
+            <ng-container *ngSwitchCase="'paymentForm'" [ngTemplateOutlet]="paymentFormFooter"></ng-container>
+        </ng-container>
+    </ng-template> -->
+
+    <!-- CONTENT TEMPLATES -->
+    <ng-template #userProfileTemplate>
+        <section class="flex flex-1 flex-column">
+            user profile works
+        </section>
+    </ng-template>
+
+    <ng-template #loginTemplate>
+        <app-login></app-login>
+    </ng-template>
+
+    <ng-template #registerTemplate>
+        <app-stripe-payment></app-stripe-payment>
+    </ng-template>
+
+</p-dialog>

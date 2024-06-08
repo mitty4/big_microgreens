@@ -48,8 +48,37 @@ export class StripePaymentComponent {
           console.log('Token acquired!');
           console.log(result.token);
           console.log(result.token.id);
+          this.sendPayment({ token: result.token.id, amount: 1000 })
         }
       });
     });
+  }
+
+  public async sendPayment(content: any) {
+    const myUrl: string = "https://j3yhgrjad6oucnt4bgyg3d733y0ldtay.lambda-url.us-east-1.on.aws/";
+    const headers: any = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Credentials': 'false',
+      'Content-Type': 'application/json'
+    };
+    const response = await fetch(myUrl, {
+      method: 'POST',
+      body: content,
+      mode: 'no-cors',
+      headers: headers });
+
+    if (!response.ok) { /* Handle */ }
+
+    // If you care about a response:
+    if (response.body !== null) {
+      console.log(response.body);
+      // body is ReadableStream<Uint8Array>
+      // parse as needed, e.g. reading directly, or
+      // const asString = new TextDecoder("utf-8").decode(response.body);
+      // // and further:
+      // const asJSON = JSON.parse(asString);  // implicitly 'any', make sure to verify type on runtime.
+    }
   }
 }
