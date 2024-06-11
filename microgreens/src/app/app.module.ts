@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
+import {CheckboxModule} from 'primeng/checkbox';
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
@@ -55,6 +57,8 @@ import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
+    RadioButtonModule,
+    CheckboxModule,
     DialogModule,
     DropdownModule,
     BrowserAnimationsModule,

@@ -18,6 +18,9 @@ export class ShoppingCartService {
   public cartItemsListener: BehaviorSubject<Product[]> = new BehaviorSubject(Array.from(this.itemsInCartMap.values()));
   public readonly cartItems$: Observable<Product[]> = this.cartItemsListener.asObservable();
   
+  public get itemsInCart(): boolean {
+    return this.itemsInCartMap.size > 0;
+  }
 
   constructor() { 
     this._initDummyData();

@@ -3,4 +3,9 @@ app-shopping-cart {
         bottom: 50px;
         left: 50px;
     }
+
+    amplify-slot {
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }
