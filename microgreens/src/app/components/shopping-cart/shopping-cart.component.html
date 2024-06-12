@@ -46,7 +46,8 @@
     <ng-template #addressFormTemplate>
         <section class="flex flex-1 flex-column">
             <form [formGroup]="addressForm">
-                <section class="flex flex-1 flex-column">
+                <!-- ORDER TYPE -->
+                <section class="flex flex-1 flex-column mt-3">
                     <label class="text-headline-5">Order Type</label>
                     <section class="flex flex-1 w-full align-items-center">
                         <div class="flex align-items-center mr-4">
@@ -59,49 +60,67 @@
                         </div>
                     </section>
                 </section>
+                <!-- DELIVERY DAY -->
+                <section class="flex flex-1 flex-column mt-3">
+                    <label class="text-headline-5">Delivery Day</label>
+                    <section class="flex flex-1 w-full align-items-center">
+                        <div class="flex align-items-center mr-4">
+                            <p-radioButton value="tuesday" formControlName="deliveryDay" inputId="tuesday"></p-radioButton>
+                            <label for="tuesday" class="ml-2">Tuesday</label>
+                        </div>
+                        <div class="flex align-items-center mr-4">
+                            <p-radioButton value="thursday" formControlName="deliveryDay" inputId="Thursday"></p-radioButton>
+                            <label for="Thursday" class="ml-2">Thursday</label>
+                        </div>                       
+                        <div class="flex align-items-center">
+                            <p-radioButton value="both" formControlName="deliveryDay" inputId="both"></p-radioButton>
+                            <label for="both" class="ml-2">Both</label>
+                        </div>
+                    </section>
+                </section>
                 <!-- EMAIL -->
                 <section class="flex flex-1 flex-column mt-3">
-                    <label for="email-input">Email Address</label>
+                    <label for="email-input" class="text-headline-5">Email Address</label>
                     <input id="email-input" type="text" pInputText formControlName="email" />
                 </section>
                 <section class="flex flex-1 mt-3">
                     <!-- FIRST NAME -->
                     <section class="flex flex-1 flex-column mt-3 mr-3">
-                        <label for="firstname-input">First Name</label>
+                        <label for="firstname-input" class="text-headline-5">First Name</label>
                         <input id="firstname-input" type="text" pInputText formControlName="firstname" />
                     </section>
                     <!-- LAST NAME -->
                     <section class="flex flex-1 flex-column mt-3">
-                        <label for="lastname-input">Last Name</label>
+                        <label for="lastname-input" class="text-headline-5">Last Name</label>
                         <input id="lastname-input" type="text" pInputText formControlName="lastname" />
                     </section>
                 </section>
                 <section class="flex flex-1 mt-3">
                     <!-- DELIVERY ADDRESS -->
                     <section class="flex flex-1 flex-column mt-3 flex-grow-3 mr-3">
-                        <label for="address1-input">Delivery Address</label>
+                        <label for="address1-input" class="text-headline-5">Delivery Address</label>
                         <input id="address1-input" type="text" pInputText formControlName="address1" />
                     </section>
                     <!-- APT SUITE -->
                     <section class="flex flex-1 flex-column mt-3 flex-grow-1">
-                        <label for="address2-input">Apt/Suite #</label>
+                        <label for="address2-input" class="text-headline-5">Apt/Suite #</label>
                         <input id="address2-input" type="text" pInputText formControlName="address2" />
                     </section>
                 </section>
                 <section class="flex flex-1 mt-3">
                     <!-- CITY -->
                     <section class="flex flex-1 flex-column mt-3 pr-3 w-4">
-                        <label for="city-input">City</label>
+                        <label for="city-input" class="text-headline-5">City</label>
                         <input id="city-input" type="text" pInputText formControlName="city" />
                     </section>
                     <!-- STATE -->
                     <section class="flex flex-1 flex-column mt-3 pr-3 w-4">
-                        <label for="state-input">State</label>
+                        <label for="state-input" class="text-headline-5">State</label>
                         <input id="state-input" type="text" pInputText formControlName="state" />
                     </section>
                     <!-- ZIP CODE -->
                     <section class="flex flex-1 flex-column mt-3 w-4">
-                        <label for="zipcode-input">Zip Code</label>
+                        <label for="zipcode-input" class="text-headline-5">Zip Code</label>
                         <input id="zipcode-input" type="text" pInputText formControlName="zipcode" />
                     </section>
                 </section>
@@ -128,7 +147,24 @@
     </ng-template>
 
     <ng-template #paymentFormTemplate>
-        <app-stripe-payment></app-stripe-payment>
+        <!-- NEW PAYMENT METHOD -->
+        <section class="flex flex-column mt-2">
+                <label for="newPayment" class="ml-2">Add New Payment Method</label>
+                <app-stripe-payment></app-stripe-payment>
+        </section>
+        <section [formGroup]="addressForm" class="flex flex-column mt-3">
+            <label class="text-headline-5">Payment Method</label>
+            <!-- EXISTING PAYMENT METHODS -->
+            <ng-container *ngIf="existingPaymentMethods.length > 0; else emptyPaymentMethods">
+                <section *ngFor="let m of existingPaymentMethods" class="flex mt-2">
+                    <p-radioButton [value]="m.value" formControlName="selectedPayment" [inputId]="m.label"></p-radioButton>
+                    <label [for]="m.label" class="ml-2">{{ m.label }}</label>
+                </section>
+            </ng-container>
+            <ng-template #emptyPaymentMethods>
+                Add a payment method
+            </ng-template>
+        </section>
     </ng-template>
 
     <!-- FOOTER TEMPLATES -->
@@ -160,11 +196,11 @@
                 >
             </p-button>
             <p-button
-                (click)="formIsValid ? showInAmplify = 'paymentForm' : false"
+                (click)="!formIsValid ? showInAmplify = 'paymentForm' : false"
                 label="Next"
                 styleClass="p-button-success"
-                [disabled]=!formIsValid
                 >
+                <!-- [disabled]=!formIsValid -->
             </p-button>
         </section>
     </ng-template>

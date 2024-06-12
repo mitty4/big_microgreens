@@ -4,6 +4,7 @@ import { ModalService } from 'src/app/services/modal.service';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { Observable, Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -17,6 +18,10 @@ export class ShoppingCartComponent {
   public showInAmplify: string = 'addressForm';
   public orderType: string = 'subscription';
   public useUserInfo: boolean = true;
+  public existingPaymentMethods: SelectItem[] = [
+    { label: '1234', value: 'token1234'},
+    { label: '4567', value: 'token4567'},
+  ];
   private _subscriptions: Subscription[] = [];
 
   public addressForm: FormGroup = new FormGroup({
@@ -29,6 +34,8 @@ export class ShoppingCartComponent {
     state: new FormControl('', [Validators.required]),
     zipcode: new FormControl('', [Validators.required]),
     orderType: new FormControl('subscription', [Validators.required]),
+    deliveryDay: new FormControl('tuesday', [Validators.required]),
+    selectedPayment: new FormControl('newPayment', [Validators.required])
   });
 
   public get header() {
