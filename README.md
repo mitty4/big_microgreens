@@ -13,6 +13,7 @@ This website pairs with my custom designed, CAD-ed and, 3D printed microgreen gr
 <ins>The goal has been to expedite/automate as much of the growing and harvesting of microgreens as possible. </ins>
 In the future, I plan to automate the harvesting, cleaning of the custom grow trays, and re-seeding processes with a robotic track. (already started, but this process will take many more iterations).
 
+#### gif of the site as it is still in development
 ![Dallas Microgreens Website](https://github.com/user-attachments/assets/bc4388d4-e48a-4633-8ae9-e5ef1834d5a7)
 
 
