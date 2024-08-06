@@ -10,7 +10,7 @@ Simple e-commerce website for my microgreens business. This website is part of m
 - **Lambda and DynamoDB** make **RESTful API** requests seamless and easy.
 
 This website pairs with my custom designed, CAD-ed and, 3D printed microgreen growing trays (and watering system) that automates watering and lighting from germination to harvest.
-The goal has been to expedite/automate as much of the growing and harvesting of microgreens as possible.
+<ins>The goal has been to expedite/automate as much of the growing and harvesting of microgreens as possible. </ins>
 In the future, I plan to automate the harvesting, cleaning of the custom grow trays, and re-seeding processes with a robotic track. (already started, but this process will take many more iterations).
 
 ![Dallas Microgreens Website](https://github.com/user-attachments/assets/bc4388d4-e48a-4633-8ae9-e5ef1834d5a7)
